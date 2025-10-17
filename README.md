@@ -107,15 +107,24 @@ A **modular pipeline** was created for all datasets (A, B, C, D):
 
 ## 📊 Results Summary
 
-| Dataset | ROC-AUC | PR-AUC | Observation |
-|----------|----------|--------|--------------|
-| **A (Median)** | 0.708 | 0.491 | Baseline; stable performance |
-| **B (Linear)** | 0.707 | 0.491 | Comparable to median |
-| **C (Decision Tree)** | 0.707 | 0.491 | Slightly smoother imputation |
-| **D (Listwise Deletion)** | 0.709 | 0.490 | Slight drop due to data loss |
+| **Dataset** | **Imputation Strategy** | **ROC-AUC** | **PR-AUC** | **F1 (Class 1)** | **Observation** |
+|:------------|:------------------------|:-----------:|:-----------:|:----------------:|:----------------|
+| **A** | Median Imputation | **0.708** | **0.491** | **0.4644** | Baseline model — stable and simple; performs reliably. |
+| **B** | Linear Regression Imputation | **0.707** | **0.491** | **0.4638** | Very close to median; slight numerical fluctuation due to linear assumptions. |
+| **C** | Decision Tree Imputation | **0.707** | **0.491** | **0.4642** | Handles non-linear patterns; conceptually best for credit-type data. |
+| **D** | Listwise Deletion | **0.709** | **0.490** | **0.4637** | Slightly lower performance due to reduced training samples and bias. |
 
-**Observation:**  
-Results across A, B, and C are nearly identical, showing that imputing a single variable (AGE) has minimal effect on model performance dominated by other strong predictors (credit limits, payment history, bill amounts).
+---
+
+### 🧩 Interpretation
+
+All models (A–C) show **near-identical ROC-AUC and PR-AUC values (~0.707, 0.491)** with **F1-scores around 0.46** for the minority (default) class.  
+This confirms that imputing a single feature (`AGE`) has **minimal quantitative impact**, as prediction strength largely depends on **other dominant features** such as `LIMIT_BAL`, `BILL_AMT`, and `PAY_AMT`.
+
+However, from a **conceptual and robustness perspective**:
+- **Decision Tree Imputation (C)** provides better adaptability to **non-linear and rule-based dependencies**,  
+  making it the preferred approach for financial or behavioral datasets.
+- **Listwise Deletion (D)**, while easy to apply, removes useful data and risks bias if missingness is not completely random.
 
 ---
 ## 📈 Visualizations
