@@ -2,7 +2,7 @@
 
 #### Name: Aditya Thakur &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Roll No: DA25M004
 
-> **Course:** DA5401 – Data Analysis and Machine Learning  
+> **Course:** DA5401 – Data Analytics Lab  
 > **Objective:** To explore and compare multiple imputation strategies — Median, Linear Regression, and Decision Tree Regression — and evaluate their impact on model performance using Logistic Regression.  
 
 
